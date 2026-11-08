@@ -17,8 +17,8 @@ Lumen currently provides a Qt 6 / QML desktop application and a reversible insta
 Download the repository ZIP from GitHub or clone it, then run as your normal user:
 
 ```bash
-git clone https://github.com/ftrevino739-ctrl/Lumen.git
-cd Lumen
+git clone https://github.com/ftrevino739-ctrl/LumenOS.git
+cd LumenOS
 bash scripts/install.sh
 ```
 
