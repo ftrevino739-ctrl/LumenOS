@@ -22,6 +22,7 @@ qt_add_qml_module(lumen-desktop
     QML_FILES
         Main.qml
         GlassSurface.qml
+        GlassButton.qml
 )
 
 install(TARGETS lumen-desktop
