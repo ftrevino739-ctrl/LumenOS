@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Lumen Desktop Preview
+Comment=Experimental Liquid Glass desktop interface
+Exec=lumen-desktop
+Icon=preferences-desktop-theme
+Terminal=false
+Categories=System;DesktopSettings;
+StartupNotify=true
