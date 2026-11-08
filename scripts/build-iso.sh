@@ -36,7 +36,7 @@ OUTPUT_DIR="$(dirname "$OUTPUT_ISO")"
   exit 2
 }
 
-for command in curl sha256sum mount umount mountpoint unsquashfs mksquashfs xorriso chroot rsync awk du df; do
+for command in curl sha256sum mount umount mountpoint unsquashfs mksquashfs xorriso chroot awk du df apt-get nproc realpath; do
   command -v "$command" >/dev/null 2>&1 || {
     echo "Missing required command: $command" >&2
     exit 2
@@ -50,6 +50,7 @@ if (( AVAILABLE_KB < 26214400 )); then
   exit 2
 fi
 
+BUILD_OK=0
 WORK="$(mktemp -d "$OUTPUT_DIR/.lumen-iso.XXXXXX")"
 ISO_MOUNT="$WORK/iso"
 ROOTFS="$WORK/rootfs"
@@ -61,13 +62,14 @@ cleanup() {
     if mountpoint -q "$target"; then umount -lf "$target"; fi
   done
   if mountpoint -q "$ISO_MOUNT"; then umount "$ISO_MOUNT"; fi
+  if [[ "$BUILD_OK" -ne 1 ]]; then rm -f "$OUTPUT_ISO" "${OUTPUT_ISO}.sha256"; fi
   rm -rf "$WORK"
 }
 trap cleanup EXIT INT TERM
 
 echo "Verifying the official Kubuntu 26.04.1 ISO checksum..."
 curl -fsSL "$BASE_URL/SHA256SUMS" -o "$WORK/SHA256SUMS"
-EXPECTED_SHA="$(awk -v name="$ISO_NAME" '$2 == name {print $1}' "$WORK/SHA256SUMS")"
+EXPECTED_SHA="$(awk -v name="$ISO_NAME" '$2 == name || $2 == "*" name {print $1}' "$WORK/SHA256SUMS")"
 ACTUAL_SHA="$(sha256sum "$BASE_ISO" | awk '{print $1}')"
 [[ -n "$EXPECTED_SHA" && "$ACTUAL_SHA" == "$EXPECTED_SHA" ]] || {
   echo "ISO checksum mismatch. Do not continue with an unverified base image." >&2
@@ -141,7 +143,9 @@ xorriso \
   echo "ISO creation failed." >&2
   exit 1
 }
+xorriso -indev "$OUTPUT_ISO" -report_el_torito plain >/dev/null
 sha256sum "$OUTPUT_ISO" > "${OUTPUT_ISO}.sha256"
+BUILD_OK=1
 
 echo
 echo "Lumen ISO created: $OUTPUT_ISO"
