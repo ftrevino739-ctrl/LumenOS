@@ -41,6 +41,12 @@ install(FILES ../config/plasma/Lumen.colors
 install(DIRECTORY ../config/plasma/desktoptheme/lumen
     DESTINATION share/plasma/desktoptheme
 )
+install(DIRECTORY ../config/plasma/look-and-feel/com.lumen.desktop
+    DESTINATION share/plasma/look-and-feel
+)
+install(DIRECTORY ../config/plasma/layout-templates/com.lumen.panel
+    DESTINATION share/plasma/layout-templates
+)
 install(FILES ../config/wallpapers/lumen.svg
     DESTINATION share/backgrounds
 )
