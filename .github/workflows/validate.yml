@@ -12,18 +12,43 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
-      - name: Install Qt 6 build dependencies
+      - name: Install Qt 6 build and runtime dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y build-essential cmake pkg-config qt6-base-dev qt6-declarative-dev
+          sudo apt-get install -y build-essential cmake pkg-config qt6-base-dev qt6-declarative-dev qml6-module-qtquick qml6-module-qtquick-controls qml6-module-qtquick-layouts qml6-module-qtquick-window qml6-module-qtquick-templates
       - name: Validate scripts and repository structure
         run: bash scripts/validate.sh
       - name: Configure Lumen Desktop
-        run: cmake -S desktop -B build -DCMAKE_BUILD_TYPE=Release
+        run: cmake -S desktop -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
       - name: Build Lumen Desktop
         run: cmake --build build --parallel
       - name: Package Lumen Desktop as DEB
         run: cpack --config build/CPackConfig.cmake -G DEB
+      - name: Inspect and install Debian package
+        run: |
+          dpkg-deb --info lumen-desktop-*.deb
+          sudo apt-get install -y ./lumen-desktop-*.deb
+          test -x /usr/bin/lumen-desktop
+          test -s /usr/share/plasma/desktoptheme/lumen/metadata.json
+          test -s /usr/share/color-schemes/Lumen.colors
+          test -s /usr/share/backgrounds/lumen.svg
+          test -s /usr/share/icons/hicolor/scalable/apps/lumen.svg
+      - name: Smoke test Qt Quick startup
+        shell: bash
+        run: |
+          set +e
+          output="$(QT_QPA_PLATFORM=offscreen timeout 8s /usr/bin/lumen-desktop 2>&1)"
+          status=$?
+          set -e
+          printf '%s\n' "$output"
+          if [[ "$status" -ne 124 ]]; then
+            echo "Lumen did not stay running during the offscreen smoke test (exit $status)." >&2
+            exit 1
+          fi
+          if grep -E "QQmlApplicationEngine failed|module .* is not installed|Type .* unavailable" <<<"$output"; then
+            echo "QML runtime reported a loading error." >&2
+            exit 1
+          fi
       - name: Upload Debian package
         uses: actions/upload-artifact@v4
         with:
