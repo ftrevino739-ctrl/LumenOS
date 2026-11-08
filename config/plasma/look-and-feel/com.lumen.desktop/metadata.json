@@ -1,0 +1,15 @@
+{
+  "KPlugin": {
+    "Authors": [
+      { "Name": "Lumen Project" }
+    ],
+    "Category": "System",
+    "Description": "Lumen Liquid Glass colors and Plasma style defaults.",
+    "Id": "com.lumen.desktop",
+    "License": "MIT",
+    "Name": "Lumen",
+    "Version": "0.2.1",
+    "Website": "https://github.com/ftrevino739-ctrl/LumenOS"
+  },
+  "KPackageStructure": "Plasma/LookAndFeel"
+}
