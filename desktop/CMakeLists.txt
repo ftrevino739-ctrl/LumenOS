@@ -4,9 +4,11 @@ project(VitreOSDesktop VERSION 0.1.0 LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_AUTOMOC ON)
-find_package(Qt6 6.6 REQUIRED COMPONENTS Quick)
+find_package(Qt6 6.6 REQUIRED COMPONENTS Quick QuickControls2)
 
 qt_standard_project_setup(REQUIRES 6.6)
+
+target_link_libraries(vitreos-desktop PRIVATE Qt6::Quick Qt6::QuickControls2)
 
 qt_add_executable(vitreos-desktop
     main.cpp
