@@ -1,0 +1,17 @@
+{
+  "KPlugin": {
+    "Authors": [
+      {
+        "Name": "Lumen Project",
+        "Email": "maintainers@lumenos.dev"
+      }
+    ],
+    "Category": "Plasma Theme",
+    "Description": "A calm Liquid Glass style for KDE Plasma 6.",
+    "Id": "lumen",
+    "License": "MIT",
+    "Name": "Lumen",
+    "Version": "0.2.0",
+    "Website": "https://github.com/ftrevino739-ctrl/LumenOS"
+  }
+}
