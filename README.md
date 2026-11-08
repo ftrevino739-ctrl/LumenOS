@@ -4,7 +4,7 @@
 
 VitreOS is an independent distribution project built around KDE Plasma 6, Qt 6 / QML and a carefully designed translucent desktop experience.
 
-> **Status: early development.** The repository contains the initial architecture, design tokens, package targets and starter desktop assets. No installable VitreOS ISO has been built or validated yet.
+> **Status: early development.** The repository now includes a runnable Qt Quick desktop-preview application and initial Plasma branding. It has not yet been built in this environment, integrated as a Plasma shell, packaged into an ISO, or validated in a virtual machine.
 
 ## Product direction
 
@@ -16,34 +16,38 @@ VitreOS is an independent distribution project built around KDE Plasma 6, Qt 6 /
 
 Ubuntu is selected to keep the system approachable and reduce base-system maintenance. VitreOS customizes the desktop instead of replacing the Linux kernel, package manager or core KDE services.
 
-## Repository
+## Repository map
 
+- `desktop/` — Qt Quick preview application and reusable QML components.
 - `docs/ARCHITECTURE.md` — system architecture and release acceptance criteria.
 - `docs/DESIGN-SYSTEM.md` — Liquid Glass visual language and design tokens.
 - `docs/BUILD.md` — development workflow and safety requirements.
 - `config/packages/base.txt` — initial package targets; availability must be checked.
 - `config/plasma/VitreOS.colors` — initial KDE color scheme.
-- `desktop/components/GlassSurface.qml` — reusable translucent QML surface.
-- `scripts/` — validation and package-checking helpers.
-- `.github/workflows/validate.yml` — CI validation.
+- `scripts/` — validation, package-checking and build helpers.
+- `.github/workflows/validate.yml` — repository validation.
+
+## Build the desktop preview
+
+Requirements: Qt 6.6+, CMake 3.21+, and a C++17 compiler.
+
+```bash
+cmake -S desktop -B build
+cmake --build build
+./build/vitreos-desktop
+```
+
+See [desktop/README.md](desktop/README.md) and [docs/BUILD.md](docs/BUILD.md).
 
 ## Development milestones
 
 1. Establish the visual identity and baseline Plasma configuration.
-2. Build a customized live desktop from verified Ubuntu 26.04 tooling.
-3. Integrate and validate the installer.
-4. Test boot, install, reboot, networking, graphics, updates and recovery in a disposable VM.
-5. Publish a release only after acceptance checks pass.
-
-## Getting started
-
-```bash
-git clone https://github.com/ftrevino739-ctrl/VitreOS.git
-cd VitreOS
-bash scripts/validate.sh
-```
-
-See [docs/BUILD.md](docs/BUILD.md) before attempting image creation.
+2. Build and test the Qt Quick desktop preview.
+3. Integrate the design with real Plasma components and session configuration.
+4. Build a customized live desktop from verified Ubuntu 26.04 tooling.
+5. Integrate and validate the installer.
+6. Test boot, install, reboot, networking, graphics, updates and recovery in a disposable VM.
+7. Publish a release only after acceptance checks pass.
 
 ## Safety and scope
 
