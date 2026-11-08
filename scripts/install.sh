@@ -6,21 +6,39 @@ BUILD_DIR="${ROOT_DIR}/build"
 PREFIX="/usr/local"
 
 if [[ "${EUID}" -eq 0 ]]; then
-  echo "Do not run this script with sudo. It will request sudo only for package installation and app installation." >&2
+  echo "Do not run this script with sudo. It will request elevation only when needed." >&2
   exit 2
 fi
 
 if ! command -v apt-get >/dev/null 2>&1; then
-  echo "Lumen installer currently supports Ubuntu/Kubuntu and apt-based systems only." >&2
+  echo "Lumen source installer currently supports Ubuntu/Kubuntu and apt-based systems only." >&2
   exit 2
 fi
 
-if ! command -v cmake >/dev/null 2>&1 || ! pkg-config --exists Qt6Quick Qt6QuickControls2 2>/dev/null; then
-  echo "This will install the build tools and Qt 6 development dependencies."
+packages=(
+  build-essential
+  cmake
+  pkg-config
+  qt6-base-dev
+  qt6-declarative-dev
+  qml6-module-qtquick
+  qml6-module-qtquick-controls
+  qml6-module-qtquick-layouts
+  qml6-module-qtquick-window
+)
+missing=()
+for package in "${packages[@]}"; do
+  if ! dpkg-query -W -f='${db:Status-Status}' "${package}" 2>/dev/null | grep -qx installed; then
+    missing+=("${package}")
+  fi
+done
+
+if (( ${#missing[@]} )); then
+  printf 'The following packages will be installed: %s\n' "${missing[*]}"
   read -r -p "Continue? [y/N] " answer
   [[ "${answer}" =~ ^[Yy]$ ]] || { echo "Cancelled."; exit 0; }
   sudo apt-get update
-  sudo apt-get install -y build-essential cmake pkg-config qt6-base-dev qt6-declarative-dev qml6-module-qtquick qml6-module-qtquick-controls qml6-module-qtquick-layouts qml6-module-qtquick-window
+  sudo apt-get install -y "${missing[@]}"
 fi
 
 echo "Building Lumen Desktop..."
@@ -30,8 +48,8 @@ cmake --build "${BUILD_DIR}" --parallel
 echo "Installing Lumen Desktop to ${PREFIX}..."
 sudo cmake --install "${BUILD_DIR}"
 
-echo "Installing the Lumen color scheme for the current user..."
-"${ROOT_DIR}/scripts/install-theme.sh" || echo "The app was installed; select Lumen manually in System Settings > Colors if needed."
+echo "Installing the Lumen style and wallpaper for the current user..."
+"${ROOT_DIR}/scripts/install-theme.sh"
 
 echo
 echo "Lumen Desktop is installed. Find 'Lumen Desktop Preview' in the application launcher."
