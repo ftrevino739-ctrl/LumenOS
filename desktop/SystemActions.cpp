@@ -60,7 +60,7 @@ bool SystemActions::launchApplication(const QString &application) const
         QStringLiteral("systemsettings"),
         QStringLiteral("konsole"),
         QStringLiteral("firefox"),
-        QStringLiteral("org.kde.discover")
+        QStringLiteral("plasma-discover")
     };
 
     if (!allowed.contains(application))
