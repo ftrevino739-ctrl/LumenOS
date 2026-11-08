@@ -22,8 +22,8 @@ Recommended: Kubuntu 26.04 LTS (or a supported Ubuntu installation with KDE Plas
 
 1. Open the repository page and choose **Code → Download ZIP**, or clone it:
    ```bash
-   git clone https://github.com/ftrevino739-ctrl/Lumen.git
-   cd Lumen
+   git clone https://github.com/ftrevino739-ctrl/LumenOS.git
+   cd LumenOS
    ```
 2. Run the interactive installer as your normal user (do not prefix it with sudo):
    ```bash
