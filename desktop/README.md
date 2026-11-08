@@ -1,13 +1,21 @@
-# VitreOS desktop components
+# VitreOS desktop preview
 
-This directory contains original Qt 6 / QML components used by VitreOS-specific desktop utilities.
+This directory contains the first runnable Qt 6 / QML application prototype. It is an application preview that runs on top of KDE Plasma; it does **not** replace Plasma's shell or provide a complete desktop session yet.
 
-## GlassSurface.qml
+## Build
 
-A small reusable translucent surface with configurable fill, edge and corner radius. It deliberately does not implement blur itself: background blur and translucency should be coordinated with KDE Plasma/KWin compositor settings to avoid expensive nested effects and inconsistent behavior.
+Requirements: Qt 6.6+ with the Qt Quick development components, CMake 3.21+, and a C++17 compiler.
 
-## Development requirements
+```bash
+cmake -S desktop -B build
+cmake --build build
+./build/vitreos-desktop
+```
 
-Use Qt 6 and QML APIs available in the target Ubuntu release. Components must support keyboard focus when interactive, preserve readable contrast, and provide a solid-surface fallback when transparency/compositing is disabled.
+The application uses Qt Quick Controls' Basic style and bundled QML components. It does not require elevated privileges.
 
-This is an initial component library, not a replacement Plasma shell.
+## Current limitations
+
+- Navigation changes the preview content label; the destinations are not full applications.
+- Translucent surfaces are simulated with alpha colors. Real background blur depends on the KDE compositor and will be integrated in a later step.
+- This is not yet a Plasma shell, login session, installer, or bootable ISO.
