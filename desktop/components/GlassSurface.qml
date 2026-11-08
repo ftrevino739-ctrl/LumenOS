@@ -1,6 +1,6 @@
 import QtQuick
 
-// Reusable translucent surface for VitreOS desktop components.
+// Reusable translucent surface for Lumen desktop components.
 // Blur is provided by the compositor/theme layer, not by this rectangle.
 Rectangle {
     id: root
