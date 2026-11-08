@@ -1,54 +1,55 @@
-# Build guide
+# Build and install guide
 
-## Current status
+## Current state
 
-The repository contains a Qt Quick desktop-preview application. It has not yet been compiled or tested in a clean target environment. No Lumen ISO has been built.
+Lumen currently provides a Qt 6 / QML desktop application and a reversible installer for an existing Ubuntu/Kubuntu desktop. It is not yet a standalone bootable operating system and no installable Lumen ISO has been released.
 
-## Build the desktop preview
+## Recommended system
 
-Requirements: Qt 6.6+ (Qt Quick and Qt Quick Controls), CMake 3.21+, and a C++17 compiler.
+- Kubuntu 26.04 LTS with KDE Plasma 6, or Ubuntu with Plasma 6 installed.
+- 64-bit x86 PC.
+- Internet connection.
+- User account with sudo permission.
+- At least 2 GB free disk space for build dependencies and build output.
 
-From the repository root:
+## Install the Lumen desktop application
+
+Download the repository ZIP from GitHub or clone it, then run as your normal user:
 
 ```bash
-cmake -S desktop -B build
-cmake --build build
+git clone https://github.com/ftrevino739-ctrl/VitreOS.git
+cd VitreOS
+bash scripts/install.sh
+```
+
+The script asks before installing dependencies, compiles the Qt application, installs it under `/usr/local`, and installs the Lumen KDE color scheme for the current user. It does not format disks, replace Plasma, or alter the login manager.
+
+After installation, find **Lumen Desktop Preview** in the application launcher or run `lumen-desktop`.
+
+## Build without installing
+
+Install CMake, a C++17 compiler, Qt 6 Quick and Qt 6 Quick Controls 2 development packages, then run:
+
+```bash
+cmake -S desktop -B build -DCMAKE_BUILD_TYPE=Release
+cmake --build build --parallel
 ./build/lumen-desktop
 ```
 
-This is an ordinary user-space application. It does not need root privileges and does not replace the Plasma shell.
-
-## Recommended future ISO build host
-
-A clean Ubuntu 26.04 LTS amd64 VM with internet access and at least 30 GB free disk space. Take a VM snapshot before experimenting.
-
-## Clone and inspect
+## Uninstall
 
 ```bash
-git clone https://github.com/ftrevino739-ctrl/Lumen.git
-cd Lumen
-bash scripts/validate.sh
+sudo rm -f /usr/local/bin/lumen-desktop /usr/local/share/applications/org.lumen.Desktop.desktop
+rm -f ~/.local/share/color-schemes/Lumen.colors
 ```
 
-## Check package availability
+## Future ISO work
 
-After configuring APT sources for the intended Ubuntu release:
-
-```bash
-sudo apt update
-scripts/check-packages.sh
-```
-
-The checker only reads package metadata; it does not install or remove packages.
-
-## ISO pipeline
-
-The ISO builder is intentionally not enabled until the supported Ubuntu 26.04 live-image tooling and installer integration are verified. Do not use an untested Debian live-build recipe and call the result an Ubuntu installer.
+A separate ISO pipeline still needs to be implemented and tested against the official Ubuntu 26.04 live-image and installer stack. Do not treat the desktop application installer as an operating-system installer. Any future ISO must first be tested in a disposable UEFI virtual machine with a virtual disk.
 
 ## Safety
 
-- Test installation only in a disposable VM with a virtual disk.
-- Never point an experimental installer at a physical disk.
-- Review every privileged command before running it.
-- Verify checksums of downloaded base images.
+- Do not run `scripts/install.sh` with sudo; it requests elevation only where needed.
+- Review package installation prompts before accepting.
+- Never point an experimental OS installer at a physical disk.
 - Keep backups and VM snapshots.
