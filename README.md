@@ -89,6 +89,10 @@ cmake --build build --parallel
 cpack --config build/CPackConfig.cmake -G DEB
 ```
 
+## Keep Windows installed (dual boot)
+
+Lumen is intended to support installing beside Windows using free, unallocated disk space. The ISO has not yet passed end-to-end build and UEFI virtual-machine installation tests, so **do not install the current image on a physical PC yet**. Read [the Windows dual-boot safety guide](docs/DUAL-BOOT-WINDOWS.md) before preparing partitions. Never select “Erase disk” when you want to keep Windows.
+
 ## Build the bootable Lumen ISO
 
 The repository includes `scripts/build-iso.sh`. It remasters the official Kubuntu 26.04.1 AMD64 live image, installs the Lumen Debian package into the live filesystem, sets safe Plasma defaults for newly created users, preserves the original boot records, and emits a SHA-256 checksum.
