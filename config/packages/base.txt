@@ -1,4 +1,5 @@
-# VitreOS package targets for Ubuntu 26.04; verify availability before image build.
+# Initial Ubuntu 26.04 package targets.
+# This is a planning manifest, not yet an installer manifest.
 kubuntu-desktop
 plasma-workspace
 plasma-nm
@@ -12,9 +13,11 @@ firefox
 kde-spectacle
 ark
 kdeconnect
+cmake
+g++
 qt6-base-dev
+qt6-declarative-dev
 qml6-module-qtquick
 qml6-module-qtquick-controls
-qml6-module-qtquick-effects
 qml6-module-qtquick-layouts
 qml6-module-qtquick-window
