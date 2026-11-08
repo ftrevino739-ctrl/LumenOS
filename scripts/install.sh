@@ -15,7 +15,7 @@ if ! command -v apt-get >/dev/null 2>&1; then
   exit 2
 fi
 
-if ! command -v cmake >/dev/null 2>&1 || ! pkg-config --exists Qt6Quick 2>/dev/null; then
+if ! command -v cmake >/dev/null 2>&1 || ! pkg-config --exists Qt6Quick Qt6QuickControls2 2>/dev/null; then
   echo "This will install the build tools and Qt 6 development dependencies."
   read -r -p "Continue? [y/N] " answer
   [[ "${answer}" =~ ^[Yy]$ ]] || { echo "Cancelled."; exit 0; }
