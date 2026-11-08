@@ -32,6 +32,9 @@ install(TARGETS lumen-desktop
 install(FILES org.lumen.Desktop.desktop
     DESTINATION share/applications
 )
+install(FILES ../config/icons/lumen.svg
+    DESTINATION share/icons/hicolor/scalable/apps
+)
 install(FILES ../config/plasma/Lumen.colors
     DESTINATION share/color-schemes
 )
