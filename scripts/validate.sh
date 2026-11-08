@@ -11,4 +11,4 @@ done < <(find scripts -type f -name '*.sh' -print0)
 for file in README.md docs/ARCHITECTURE.md docs/DESIGN-SYSTEM.md docs/BUILD.md config/packages/base.txt desktop/CMakeLists.txt desktop/main.cpp desktop/Main.qml desktop/components/GlassSurface.qml; do
   [[ -s "${file}" ]] || { echo "Missing or empty: ${file}" >&2; exit 1; }
 done
-echo "VitreOS repository validation passed."
+echo "Lumen repository validation passed."
