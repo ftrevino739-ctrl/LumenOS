@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
     QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("systemActions", &systemActions);
 
-    const QUrl url(QStringLiteral("qrc:/qt/qml/Lumen/Main.qml"));
+    const QUrl url(QStringLiteral("qrc:/Lumen/Main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreationFailed,
                      &app, [] { QCoreApplication::exit(EXIT_FAILURE); },
                      Qt::QueuedConnection);
