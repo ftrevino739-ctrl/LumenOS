@@ -1,0 +1,20 @@
+# VitreOS package targets for Ubuntu 26.04; verify availability before image build.
+kubuntu-desktop
+plasma-workspace
+plasma-nm
+plasma-pa
+dolphin
+konsole
+systemsettings
+sddm
+network-manager
+firefox
+kde-spectacle
+ark
+kdeconnect
+qt6-base-dev
+qml6-module-qtquick
+qml6-module-qtquick-controls
+qml6-module-qtquick-effects
+qml6-module-qtquick-layouts
+qml6-module-qtquick-window
