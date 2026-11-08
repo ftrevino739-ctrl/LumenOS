@@ -1,7 +1,7 @@
-# VitreOS architecture
+# Lumen architecture
 
 ## Product direction
-VitreOS is an Ubuntu-based desktop distribution with KDE Plasma 6 and an original Liquid Glass visual identity. The first release target is a reproducible amd64 live image that installs to a virtual disk and boots into a functional desktop.
+Lumen is an Ubuntu-based desktop distribution with KDE Plasma 6 and an original Liquid Glass visual identity. The first release target is a reproducible amd64 live image that installs to a virtual disk and boots into a functional desktop.
 
 ## Stack
 - Base: Ubuntu 26.04 LTS (Kubuntu desktop foundation).
