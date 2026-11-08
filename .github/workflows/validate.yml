@@ -15,7 +15,7 @@ jobs:
       - name: Install Qt 6 build and runtime dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y build-essential cmake pkg-config qt6-base-dev qt6-declarative-dev qml6-module-qtquick qml6-module-qtquick-controls qml6-module-qtquick-layouts qml6-module-qtquick-window qml6-module-qtquick-templates
+          sudo apt-get install -y build-essential cmake pkg-config qt6-base-dev qt6-declarative-dev qml6-module-qtqml-models qml6-module-qtqml-workerscript qml6-module-qtquick qml6-module-qtquick-controls qml6-module-qtquick-layouts qml6-module-qtquick-window qml6-module-qtquick-templates
       - name: Validate scripts and repository structure
         run: bash scripts/validate.sh
       - name: Configure Lumen Desktop
