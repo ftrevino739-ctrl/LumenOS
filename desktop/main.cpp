@@ -1,7 +1,10 @@
 #include <QCoreApplication>
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include <QQmlContext>
 #include <QQuickStyle>
+
+#include "SystemActions.h"
 
 int main(int argc, char *argv[])
 {
@@ -11,7 +14,10 @@ int main(int argc, char *argv[])
 
     QQuickStyle::setStyle("Basic");
 
+    SystemActions systemActions;
     QQmlApplicationEngine engine;
+    engine.rootContext()->setContextProperty("systemActions", &systemActions);
+
     const QUrl url(QStringLiteral("qrc:/qt/qml/Lumen/Main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreationFailed,
                      &app, [] { QCoreApplication::exit(EXIT_FAILURE); },
