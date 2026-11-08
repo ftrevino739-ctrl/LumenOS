@@ -19,7 +19,7 @@ qt_add_qml_module(lumen-desktop
     VERSION 1.0
     QML_FILES
         Main.qml
-        components/GlassSurface.qml
+        GlassSurface.qml
 )
 
 install(TARGETS lumen-desktop
