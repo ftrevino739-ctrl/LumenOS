@@ -33,6 +33,9 @@ install(TARGETS lumen-desktop
 install(FILES org.lumen.Desktop.desktop
     DESTINATION share/applications
 )
+install(FILES ../LICENSE ../README.md
+    DESTINATION share/doc/lumen-desktop
+)
 install(FILES ../config/icons/lumen.svg
     DESTINATION share/icons/hicolor/scalable/apps
 )
