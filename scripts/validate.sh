@@ -14,6 +14,7 @@ required_files=(
   docs/ARCHITECTURE.md
   docs/DESIGN-SYSTEM.md
   docs/BUILD.md
+  docs/ISO-BUILD.md
   config/packages/base.txt
   config/icons/lumen.svg
   config/plasma/Lumen.colors
@@ -34,6 +35,7 @@ required_files=(
   desktop/SystemActions.cpp
   desktop/Main.qml
   desktop/GlassSurface.qml
+  desktop/GlassButton.qml
   desktop/org.lumen.Desktop.desktop
   scripts/install.sh
   scripts/install-theme.sh
