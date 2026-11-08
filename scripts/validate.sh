@@ -19,6 +19,11 @@ required_files=(
   config/plasma/Lumen.colors
   config/plasma/desktoptheme/lumen/metadata.json
   config/plasma/desktoptheme/lumen/plasmarc
+  config/plasma/look-and-feel/com.lumen.desktop/manifest.json
+  config/plasma/look-and-feel/com.lumen.desktop/metadata.json
+  config/plasma/look-and-feel/com.lumen.desktop/contents/defaults
+  config/plasma/layout-templates/com.lumen.panel/metadata.json
+  config/plasma/layout-templates/com.lumen.panel/contents/layout.js
   config/plasma/desktoptheme/lumen/widgets/background.svg
   config/plasma/desktoptheme/lumen/widgets/panel-background.svg
   config/plasma/desktoptheme/lumen/dialogs/background.svg
@@ -46,6 +51,16 @@ with open("config/plasma/desktoptheme/lumen/metadata.json", encoding="utf-8") as
     metadata = json.load(stream)
 assert metadata["KPlugin"]["Id"] == "lumen"
 assert metadata["KPlugin"]["Name"] == "Lumen"
+
+with open("config/plasma/look-and-feel/com.lumen.desktop/manifest.json", encoding="utf-8") as stream:
+    manifest = json.load(stream)
+assert manifest["KPackageStructure"] == "Plasma/LookAndFeel"
+with open("config/plasma/look-and-feel/com.lumen.desktop/metadata.json", encoding="utf-8") as stream:
+    look_and_feel = json.load(stream)
+assert look_and_feel["KPlugin"]["Id"] == "com.lumen.desktop"
+with open("config/plasma/layout-templates/com.lumen.panel/metadata.json", encoding="utf-8") as stream:
+    panel = json.load(stream)
+assert panel["KPackageStructure"] == "Plasma/LayoutTemplate"
 
 for path in (
     "config/icons/lumen.svg",
