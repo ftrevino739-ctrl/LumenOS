@@ -8,11 +8,11 @@ find_package(Qt6 6.6 REQUIRED COMPONENTS Quick QuickControls2)
 
 qt_standard_project_setup(REQUIRES 6.6)
 
-target_link_libraries(vitreos-desktop PRIVATE Qt6::Quick Qt6::QuickControls2)
-
 qt_add_executable(vitreos-desktop
     main.cpp
 )
+
+target_link_libraries(vitreos-desktop PRIVATE Qt6::Quick Qt6::QuickControls2)
 
 qt_add_qml_module(vitreos-desktop
     URI VitreOS
