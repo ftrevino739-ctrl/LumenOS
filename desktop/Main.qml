@@ -1,7 +1,7 @@
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
-import VitreOS
+import Lumen
 
 ApplicationWindow {
     id: window
@@ -10,7 +10,7 @@ ApplicationWindow {
     minimumWidth: 900
     minimumHeight: 620
     visible: true
-    title: "VitreOS"
+    title: "Lumen"
     color: "#0b1220"
 
     property string selectedSection: "Inicio"
@@ -63,7 +63,7 @@ ApplicationWindow {
                     }
                     Column {
                         spacing: 1
-                        Text { text: "VitreOS"; color: "#f4f7fc"; font.pixelSize: 18; font.bold: true }
+                        Text { text: "Lumen"; color: "#f4f7fc"; font.pixelSize: 18; font.bold: true }
                         Text { text: "Liquid Glass"; color: "#9fb2ca"; font.pixelSize: 11 }
                     }
                 }
@@ -112,7 +112,7 @@ ApplicationWindow {
                         anchors.left: parent.left
                         anchors.leftMargin: 13
                         spacing: 4
-                        Text { text: "VitreOS Preview"; color: "#eaf2fb"; font.pixelSize: 12; font.bold: true }
+                        Text { text: "Lumen Preview"; color: "#eaf2fb"; font.pixelSize: 12; font.bold: true }
                         Text { text: "Build 0.1 · Experimental"; color: "#8ea4bd"; font.pixelSize: 10 }
                     }
                 }
@@ -167,7 +167,7 @@ ApplicationWindow {
                         Text {
                             text: window.selectedSection === "Inicio"
                                   ? "Bienvenido a una nueva forma de usar tu escritorio."
-                                  : "Esta sección es parte de la vista previa de VitreOS."
+                                  : "Esta sección es parte de la vista previa de Lumen."
                             color: "#a9bad0"
                             font.pixelSize: 14
                         }
@@ -195,7 +195,7 @@ ApplicationWindow {
                                 Rectangle {
                                     radius: 10; color: "#4b86bd"
                                     implicitWidth: 132; implicitHeight: 34
-                                    Text { anchors.centerIn: parent; text: "Explorar VitreOS"; color: "white"; font.pixelSize: 11; font.bold: true }
+                                    Text { anchors.centerIn: parent; text: "Explorar Lumen"; color: "white"; font.pixelSize: 11; font.bold: true }
                                 }
                                 Text { text: "Interfaz de demostración"; color: "#91a9c3"; font.pixelSize: 11 }
                             }
