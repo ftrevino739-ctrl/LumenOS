@@ -11,14 +11,15 @@ Si solo tienes un disco, crea espacio no asignado desde Windows y deja que el in
 ## Preparación en Windows 10/11
 
 1. Copia tus documentos importantes a un disco externo o nube y comprueba que puedes abrir la copia.
-2. Guarda la clave de recuperación de BitLocker/Device Encryption si está activado. No continúes sin ella.
-3. Comprueba el cifrado en Configuración → Privacidad y seguridad → Cifrado del dispositivo, o busca Administrar BitLocker desde Inicio. La disponibilidad depende de la edición y el equipo.
-4. Comprueba que Windows arranca en modo UEFI: pulsa Win + R, escribe msinfo32 y revisa Modo de BIOS: UEFI.
-5. Abre Administración de discos (clic derecho en Inicio → Administración de discos).
-6. Clic derecho en la partición grande C: → Reducir volumen. Reduce solo el espacio que quieras dedicar a Lumen. Como referencia, reserva 80 GB como mínimo práctico; 100–150 GB ofrece más margen.
-7. Deja ese espacio como No asignado. No crees un volumen nuevo, no lo formatees y no borres las particiones EFI, Recovery o MSR de Windows.
-8. Desactiva Inicio rápido antes de compartir el disco con Linux. En Terminal/PowerShell como administrador ejecuta: powercfg /h off. Esto también desactiva hibernación. Para revertirlo: powercfg /h on.
-9. Reinicia Windows una vez y confirma que sigue arrancando normalmente.
+2. Comprueba BitLocker/Device Encryption desde Configuración → Privacidad y seguridad → Cifrado del dispositivo, o busca Administrar BitLocker desde Inicio. También puedes abrir PowerShell como administrador y ejecutar `manage-bde -status C:`.
+3. Si BitLocker o Device Encryption está activado en el disco donde está Windows, **no basta con guardar la clave de recuperación**: el instalador no puede leer con seguridad la estructura cifrada para instalar junto a Windows. Detente y consulta primero la guía oficial para desactivar BitLocker; haz una copia de seguridad y entiende las consecuencias antes de cambiarlo. Algunas versiones/configuraciones de Windows pueden no permitir volver a activarlo después. No continúes con una opción que proponga borrar Windows.
+4. Guarda la clave de recuperación fuera del PC si el cifrado está activo. No continúes sin ella.
+5. Comprueba que Windows arranca en modo UEFI: pulsa Win + R, escribe msinfo32 y revisa Modo de BIOS: UEFI.
+6. Abre Administración de discos (clic derecho en Inicio → Administración de discos). En la parte inferior identifica Disco 0, Disco 1, etc.; revisa capacidad, particiones y si existe un segundo disco. No cambies nada todavía.
+7. Si solo hay un disco, y tras comprobar copias de seguridad/cifrado, clic derecho en C: → Reducir volumen. Para este equipo de 512 GB, 100 GB es una reserva razonable si Windows tiene espacio suficiente. Deja el resultado como No asignado; no crees un volumen nuevo ni formatees.
+8. No borres ni formatees particiones EFI, Recovery o MSR de Windows.
+9. Desactiva Inicio rápido antes de compartir el disco con Linux. En Terminal/PowerShell como administrador ejecuta: `powercfg /h off`. Esto también desactiva hibernación. Para revertirlo: `powercfg /h on`.
+10. Reinicia Windows una vez y confirma que sigue arrancando normalmente.
 
 ## Instalación cuando la ISO de Lumen esté validada
 
@@ -46,4 +47,5 @@ Selecciona Windows Boot Manager desde el menú UEFI. No borres particiones Linux
 
 - [Instalar Ubuntu junto a otro sistema operativo](https://ubuntu.com/desktop/docs/en/latest/tutorial/install-ubuntu-desktop/)
 - [BitLocker durante la instalación](https://github.com/ubuntu/ubuntu-desktop-documentation/blob/main/docs/reference/bitlocker-during-ubuntu-installation.md)
+- [Requisitos de Ubuntu 26.04](https://documentation.ubuntu.com/release-notes/26.04/)
 - [Descargar Kubuntu](https://www.kubuntu.org/download/)
