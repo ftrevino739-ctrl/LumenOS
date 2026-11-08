@@ -15,6 +15,7 @@ required_files=(
   docs/DESIGN-SYSTEM.md
   docs/BUILD.md
   docs/ISO-BUILD.md
+  docs/DUAL-BOOT-WINDOWS.md
   config/packages/base.txt
   config/icons/lumen.svg
   config/plasma/Lumen.colors
