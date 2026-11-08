@@ -1,4 +1,4 @@
-# VitreOS desktop preview
+# Lumen desktop preview
 
 This directory contains the first runnable Qt 6 / QML application prototype. It is an application preview that runs on top of KDE Plasma; it does **not** replace Plasma's shell or provide a complete desktop session yet.
 
@@ -9,7 +9,7 @@ Requirements: Qt 6.6+ with the Qt Quick development components, CMake 3.21+, and
 ```bash
 cmake -S desktop -B build
 cmake --build build
-./build/vitreos-desktop
+./build/lumen-desktop
 ```
 
 The application uses Qt Quick Controls' Basic style and bundled QML components. It does not require elevated privileges.
