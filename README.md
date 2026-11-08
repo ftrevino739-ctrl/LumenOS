@@ -1,8 +1,8 @@
-# VitreOS
+# Lumen
 
 **A modern Ubuntu-based Linux desktop with an original Liquid Glass identity.**
 
-VitreOS is an independent distribution project built around KDE Plasma 6, Qt 6 / QML and a carefully designed translucent desktop experience.
+Lumen is an independent distribution project built around KDE Plasma 6, Qt 6 / QML and a carefully designed translucent desktop experience.
 
 > **Status: early development.** The repository now includes a runnable Qt Quick desktop-preview application and initial Plasma branding. It has not yet been built in this environment, integrated as a Plasma shell, packaged into an ISO, or validated in a virtual machine.
 
@@ -10,11 +10,11 @@ VitreOS is an independent distribution project built around KDE Plasma 6, Qt 6 /
 
 - **Base:** Ubuntu 26.04 LTS, using the Kubuntu/KDE Plasma desktop foundation.
 - **Desktop:** KDE Plasma 6; Wayland preferred.
-- **Toolkit:** Qt 6 and QML for original VitreOS components.
+- **Toolkit:** Qt 6 and QML for original Lumen components.
 - **Visual identity:** translucent surfaces, subtle blur, fine highlights, soft depth, rounded geometry and accessible contrast.
 - **Initial target:** amd64 live image with a working installer, followed by VM and hardware validation.
 
-Ubuntu is selected to keep the system approachable and reduce base-system maintenance. VitreOS customizes the desktop instead of replacing the Linux kernel, package manager or core KDE services.
+Ubuntu is selected to keep the system approachable and reduce base-system maintenance. Lumen customizes the desktop instead of replacing the Linux kernel, package manager or core KDE services.
 
 ## Repository map
 
@@ -23,7 +23,7 @@ Ubuntu is selected to keep the system approachable and reduce base-system mainte
 - `docs/DESIGN-SYSTEM.md` — Liquid Glass visual language and design tokens.
 - `docs/BUILD.md` — development workflow and safety requirements.
 - `config/packages/base.txt` — initial package targets; availability must be checked.
-- `config/plasma/VitreOS.colors` — initial KDE color scheme.
+- `config/plasma/Lumen.colors` — initial KDE color scheme.
 - `scripts/` — validation, package-checking and build helpers.
 - `.github/workflows/validate.yml` — repository validation.
 
@@ -34,7 +34,7 @@ Requirements: Qt 6.6+, CMake 3.21+, and a C++17 compiler.
 ```bash
 cmake -S desktop -B build
 cmake --build build
-./build/vitreos-desktop
+./build/lumen-desktop
 ```
 
 See [desktop/README.md](desktop/README.md) and [docs/BUILD.md](docs/BUILD.md).
@@ -51,7 +51,7 @@ See [desktop/README.md](desktop/README.md) and [docs/BUILD.md](docs/BUILD.md).
 
 ## Safety and scope
 
-Do not install experimental images on a machine containing important data. Use a disposable virtual machine and virtual disk until the installer is proven. VitreOS v0.1 does not promise universal hardware support or replace Windows/macOS.
+Do not install experimental images on a machine containing important data. Use a disposable virtual machine and virtual disk until the installer is proven. Lumen v0.1 does not promise universal hardware support or replace Windows/macOS.
 
 ## License
 
