@@ -21,6 +21,8 @@ packages=(
   pkg-config
   qt6-base-dev
   qt6-declarative-dev
+  qml6-module-qtqml-models
+  qml6-module-qtqml-workerscript
   qml6-module-qtquick
   qml6-module-qtquick-controls
   qml6-module-qtquick-layouts
