@@ -119,6 +119,8 @@ done
 echo "Rebuilding the live filesystem..."
 du -sx --block-size=1 "$ROOTFS" | awk '{print $1}' > "$WORK/filesystem.size"
 mksquashfs "$ROOTFS" "$WORK/filesystem.squashfs" -comp xz -b 1M -noappend -processors "$(nproc)"
+# The rebuilt SquashFS is self-contained; remove the expanded tree before xorriso writes the ISO.
+rm -rf "$ROOTFS"
 
 awk '$2 != "./casper/filesystem.squashfs" && $2 != "./casper/filesystem.size" {print}' "$ISO_MOUNT/md5sum.txt" > "$WORK/md5sum.txt"
 (
