@@ -2,7 +2,7 @@
 
 ## Current status
 
-The repository contains a Qt Quick desktop-preview application. It has not yet been compiled or tested in a clean target environment. No VitreOS ISO has been built.
+The repository contains a Qt Quick desktop-preview application. It has not yet been compiled or tested in a clean target environment. No Lumen ISO has been built.
 
 ## Build the desktop preview
 
@@ -13,7 +13,7 @@ From the repository root:
 ```bash
 cmake -S desktop -B build
 cmake --build build
-./build/vitreos-desktop
+./build/lumen-desktop
 ```
 
 This is an ordinary user-space application. It does not need root privileges and does not replace the Plasma shell.
@@ -25,8 +25,8 @@ A clean Ubuntu 26.04 LTS amd64 VM with internet access and at least 30 GB free d
 ## Clone and inspect
 
 ```bash
-git clone https://github.com/ftrevino739-ctrl/VitreOS.git
-cd VitreOS
+git clone https://github.com/ftrevino739-ctrl/Lumen.git
+cd Lumen
 bash scripts/validate.sh
 ```
 
