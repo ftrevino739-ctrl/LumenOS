@@ -1,4 +1,4 @@
-# VitreOS Liquid Glass design system
+# Lumen Liquid Glass design system
 
 ## Direction
 A calm, premium glass interface: layered translucent surfaces, subtle background blur, fine edge highlights, soft shadows, rounded geometry and restrained motion. It must remain a usable desktop, not a static concept.
