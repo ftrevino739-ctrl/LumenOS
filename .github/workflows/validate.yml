@@ -1,4 +1,4 @@
-name: VitreOS validation
+name: Lumen build and validation
 on:
   push:
     branches: [main]
@@ -8,9 +8,17 @@ on:
 permissions:
   contents: read
 jobs:
-  validate:
-    runs-on: ubuntu-latest
+  build:
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
-      - name: Validate project structure and shell syntax
+      - name: Install Qt 6 build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential cmake pkg-config qt6-base-dev qt6-declarative-dev qt6-quickcontrols2-dev
+      - name: Validate scripts and repository structure
         run: bash scripts/validate.sh
+      - name: Configure Lumen Desktop
+        run: cmake -S desktop -B build -DCMAKE_BUILD_TYPE=Release
+      - name: Build Lumen Desktop
+        run: cmake --build build --parallel
