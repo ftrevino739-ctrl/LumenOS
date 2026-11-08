@@ -79,7 +79,7 @@ ApplicationWindow {
                         { label: "Ajustes", glyph: "⚙" },
                         { label: "Acerca de", glyph: "◇" }
                     ]
-                    delegate: Button {
+                    delegate: GlassButton {
                         Layout.fillWidth: true
                         implicitHeight: 44
                         text: modelData.glyph + "    " + modelData.label
@@ -140,11 +140,11 @@ ApplicationWindow {
                         font.bold: true
                         Layout.fillWidth: true
                     }
-                    Button {
+                    GlassButton {
                         text: "Archivos"
                         onClicked: systemActions.openHomeFolder()
                     }
-                    Button {
+                    GlassButton {
                         text: "Ajustes"
                         onClicked: systemActions.openSettings()
                     }
@@ -200,15 +200,15 @@ ApplicationWindow {
                             Item { Layout.fillHeight: true }
                             RowLayout {
                                 spacing: 10
-                                Button {
+                                GlassButton {
                                     text: "Abrir archivos"
                                     onClicked: systemActions.openHomeFolder()
                                 }
-                                Button {
+                                GlassButton {
                                     text: "Ajustes del sistema"
                                     onClicked: systemActions.openSettings()
                                 }
-                                Button {
+                                GlassButton {
                                     text: "Abrir navegador"
                                     onClicked: systemActions.openBrowser()
                                 }
@@ -233,27 +233,27 @@ ApplicationWindow {
                                 columns: width > 600 ? 3 : 1
                                 columnSpacing: 12
                                 rowSpacing: 10
-                                Button {
+                                GlassButton {
                                     Layout.fillWidth: true
                                     text: "▤   Dolphin · Archivos"
                                     onClicked: systemActions.launchApplication("dolphin")
                                 }
-                                Button {
+                                GlassButton {
                                     Layout.fillWidth: true
                                     text: "⚙   Ajustes del sistema"
                                     onClicked: systemActions.openSettings()
                                 }
-                                Button {
+                                GlassButton {
                                     Layout.fillWidth: true
                                     text: ">_   Terminal"
                                     onClicked: systemActions.openTerminal()
                                 }
-                                Button {
+                                GlassButton {
                                     Layout.fillWidth: true
                                     text: "◎   Firefox"
                                     onClicked: systemActions.launchApplication("firefox")
                                 }
-                                Button {
+                                GlassButton {
                                     Layout.fillWidth: true
                                     text: "▣   Discover"
                                     onClicked: systemActions.launchApplication("plasma-discover")
@@ -275,7 +275,7 @@ ApplicationWindow {
                             Text { text: "TUS ARCHIVOS"; color: "#8fcaff"; font.pixelSize: 10; font.bold: true }
                             Text { text: "Accede a tu carpeta personal"; color: "#f0f5fb"; font.pixelSize: 19; font.bold: true }
                             Text { text: systemInfo.hostname + " · " + systemInfo.architecture; color: "#a9bad0"; font.pixelSize: 12 }
-                            Button { text: "Abrir carpeta personal"; onClicked: systemActions.openHomeFolder() }
+                            GlassButton { text: "Abrir carpeta personal"; onClicked: systemActions.openHomeFolder() }
                         }
                     }
 
@@ -292,7 +292,7 @@ ApplicationWindow {
                             Text { text: "PERSONALIZACIÓN"; color: "#8fcaff"; font.pixelSize: 10; font.bold: true }
                             Text { text: "Configura tu escritorio"; color: "#f0f5fb"; font.pixelSize: 19; font.bold: true }
                             Text { text: "El esquema de color Lumen se instala junto con el paquete. El estilo Plasma se puede activar desde Apariencia."; color: "#a9bad0"; font.pixelSize: 12; wrapMode: Text.WordWrap; Layout.fillWidth: true }
-                            Button { text: "Abrir Ajustes del sistema"; onClicked: systemActions.openSettings() }
+                            GlassButton { text: "Abrir Ajustes del sistema"; onClicked: systemActions.openSettings() }
                         }
                     }
 
