@@ -1,0 +1,20 @@
+{
+  "KPlugin": {
+    "Authors": [
+      { "Name": "Lumen Project" }
+    ],
+    "Category": "Panel",
+    "Description": "A non-destructive glass panel with application launcher, task manager, system tray and clock.",
+    "Icon": "preferences-desktop",
+    "Id": "com.lumen.panel",
+    "License": "MIT",
+    "Name": "Lumen Glass Panel",
+    "Version": "0.2.1",
+    "Website": "https://github.com/ftrevino739-ctrl/LumenOS"
+  },
+  "X-Plasma-ContainmentCategories": [
+    "panel"
+  ],
+  "X-Plasma-Shell": "plasma-desktop",
+  "KPackageStructure": "Plasma/LayoutTemplate"
+}
