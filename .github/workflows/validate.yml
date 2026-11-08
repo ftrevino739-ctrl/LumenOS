@@ -33,6 +33,8 @@ jobs:
           test -s /usr/share/color-schemes/Lumen.colors
           test -s /usr/share/backgrounds/lumen.svg
           test -s /usr/share/icons/hicolor/scalable/apps/lumen.svg
+          test -s /usr/share/plasma/look-and-feel/com.lumen.desktop/manifest.json
+          test -s /usr/share/plasma/layout-templates/com.lumen.panel/metadata.json
       - name: Smoke test Qt Quick startup
         shell: bash
         run: |
