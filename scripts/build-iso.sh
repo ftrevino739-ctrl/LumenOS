@@ -136,6 +136,7 @@ xorriso \
   -map "$WORK/filesystem.squashfs" /casper/filesystem.squashfs \
   -map "$WORK/filesystem.size" /casper/filesystem.size \
   -map "$WORK/md5sum.txt" /md5sum.txt \
+  -volid LUMEN_26_04_1 \
   -boot_image any replay \
   -compliance no_emul_toc \
   -padding included \
