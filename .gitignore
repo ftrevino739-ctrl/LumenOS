@@ -1,0 +1,10 @@
+/build/
+/out/
+/dist/
+*.iso
+*.iso.sha256
+*.log
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
