@@ -7,6 +7,7 @@ plasma-pa
 dolphin
 konsole
 systemsettings
+plasma-discover
 sddm
 network-manager
 firefox
