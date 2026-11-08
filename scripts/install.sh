@@ -20,7 +20,7 @@ if ! command -v cmake >/dev/null 2>&1 || ! pkg-config --exists Qt6Quick Qt6Quick
   read -r -p "Continue? [y/N] " answer
   [[ "${answer}" =~ ^[Yy]$ ]] || { echo "Cancelled."; exit 0; }
   sudo apt-get update
-  sudo apt-get install -y build-essential cmake pkg-config qt6-base-dev qt6-declarative-dev qt6-quickcontrols2-dev qml6-module-qtquick qml6-module-qtquick-controls qml6-module-qtquick-layouts qml6-module-qtquick-window
+  sudo apt-get install -y build-essential cmake pkg-config qt6-base-dev qt6-declarative-dev qml6-module-qtquick qml6-module-qtquick-controls qml6-module-qtquick-layouts qml6-module-qtquick-window
 fi
 
 echo "Building Lumen Desktop..."
