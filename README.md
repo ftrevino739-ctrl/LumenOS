@@ -143,7 +143,7 @@ If you activated the Lumen Plasma style or color scheme, select Breeze (or anoth
 
 ## Repository map
 
-- `desktop/` — Qt Quick application and C++ system actions.
+- `desktop/` — Qt Quick application, C++ system actions and reusable Liquid Glass controls.
 - `config/plasma/desktoptheme/` — Plasma 6 style assets.
 - `config/plasma/look-and-feel/` — Global Theme package.
 - `config/plasma/layout-templates/` — optional panel layout.
